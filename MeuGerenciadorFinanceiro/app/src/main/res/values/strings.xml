@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MeuGerenciadorFinanceiro</string>
+    <string-array name="categorias">
+        <item>Lazer</item>
+        <item>Veículo</item>
+        <item>Casa</item>
+        <item>Escola</item>
+        <item>Saúde</item>
+        <item>Rituais Satânicos</item>
+    </string-array>
+</resources>
