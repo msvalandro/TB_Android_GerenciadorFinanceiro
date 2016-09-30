@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\aluno\\Desktop\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\aluno\\Desktop\\MeuGerenciadorFinanceiro\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "/Users/homeuser/Documents/AndroidApps/TB_WEBIII_Gerenciador-Financeiro/MeuGerenciadorFinanceiro/app/build/intermediates/res/merged/debug/mipmap-mdpi-v4/ic_launcher.png",
+        "source": "/Users/homeuser/Documents/AndroidApps/TB_WEBIII_Gerenciador-Financeiro/MeuGerenciadorFinanceiro/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/homeuser/Documents/AndroidApps/TB_WEBIII_Gerenciador-Financeiro/MeuGerenciadorFinanceiro/C:\\Users\\aluno\\Desktop\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "/Users/homeuser/Documents/AndroidApps/TB_WEBIII_Gerenciador-Financeiro/MeuGerenciadorFinanceiro/C:\\Users\\aluno\\Desktop\\MeuGerenciadorFinanceiro\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]

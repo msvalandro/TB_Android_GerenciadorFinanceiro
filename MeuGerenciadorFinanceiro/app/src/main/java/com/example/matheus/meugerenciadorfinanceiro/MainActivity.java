@@ -55,10 +55,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(it, REQUEST_CAT);
                 break;
             case R.id.btnSlv:
-                Lancamento lancamento = new Lancamento(editTextDescricao.getText().toString(),Integer.parseInt(editTextData.getText().toString()), Float.parseFloat(editTextValor.getText().toString()));
-                Lancamento.lancamentos.add(lancamento);
-                Toast.makeText(this, "Adicionado.", Toast.LENGTH_SHORT).show();
-                clear();
+                    if (!editTextDescricao.getText().toString().isEmpty() && !editTextData.getText().toString().isEmpty() && !editTextValor.getText().toString().isEmpty()){
+                        Lancamento lancamento = new Lancamento(editTextDescricao.getText().toString(),Integer.parseInt(editTextData.getText().toString()), Float.parseFloat(editTextValor.getText().toString()));
+                        Lancamento.lancamentos.add(lancamento);
+                        clear();
+                        Toast.makeText(this, "Adicionado.", Toast.LENGTH_SHORT).show();
+            }else{
+                        Toast.makeText(this, "Complete os campos.", Toast.LENGTH_SHORT).show();
+                }
+
+
+
                 break;
             case R.id.btnList:
                 intent = new Intent(getBaseContext(), ListaLancamentosActivity.class);
@@ -70,12 +77,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-
+/*
         Intent intent = getIntent();
         Lancamento lancamentoBk = intent.getParcelableExtra("chave1");
         editTextDescricao.setText(lancamentoBk.getDescricao());
         editTextData.setText(String.valueOf(lancamentoBk.getData()));
-        editTextValor.setText(String.valueOf(lancamentoBk.getValor()));
+        editTextValor.setText(String.valueOf(lancamentoBk.getValor()));*/
     }
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {

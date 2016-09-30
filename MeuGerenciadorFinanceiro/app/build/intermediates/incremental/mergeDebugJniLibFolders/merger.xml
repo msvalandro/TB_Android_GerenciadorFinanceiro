@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\aluno\Desktop\MeuGerenciadorFinanceiro\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\aluno\Desktop\MeuGerenciadorFinanceiro\app\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/homeuser/Documents/AndroidApps/TB_WEBIII_Gerenciador-Financeiro/MeuGerenciadorFinanceiro/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/homeuser/Documents/AndroidApps/TB_WEBIII_Gerenciador-Financeiro/MeuGerenciadorFinanceiro/app/src/debug/jniLibs"/></dataSet></merger>

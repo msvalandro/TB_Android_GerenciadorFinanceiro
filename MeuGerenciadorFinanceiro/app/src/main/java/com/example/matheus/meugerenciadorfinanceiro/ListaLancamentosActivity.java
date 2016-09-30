@@ -18,8 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaLancamentosActivity extends AppCompatActivity {
+
     ArrayList<Lancamento> lancamentos = new ArrayList<Lancamento>(); //array
+
     private ListView listView;  //outlet para listview
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,51 +30,28 @@ public class ListaLancamentosActivity extends AppCompatActivity {
 
 
         listView = (ListView) findViewById(R.id.listView);
-
         LancamentoAdapter adapter = new LancamentoAdapter(this, Lancamento.lancamentos);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                intent.putExtra("chave1", lancamentos.get(position));
-                startActivity(intent);
+    listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+
+    {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                /*TextView textViewLancamento = ((TextView) view.findViewById(R.id.textViewLancamento));
-                TextView textViewData = ((TextView) view.findViewById(R.id.textViewRecebeData));
-                //TextView textViewValor = ((TextView) view.findViewById(R.id.textViewRecebeValor));
+          Intent intent = new Intent(getBaseContext(), MainActivity.class);
 
-                // get the clicked item name
-                String listItemDescricao = textViewLancamento.getText().toString();
+            // ESSE ARRAY ESTA VAZIO -> lancamentos.get(position)
+            //intent.putExtra("chave1", lancamentos.get(position));
+            startActivity(intent);
 
-                // get the clicked item ID
-                String listItemData = textViewData.getTag().toString();
-                //String listItemValor = textViewValor.ge
+                /*
+                startActivity(intent);*/
 
-                // just toast it
-                Toast.makeText(context, "Item: " + textViewLancamento + ", Item ID: " + textViewData, Toast.LENGTH_SHORT).show();
-                */
+           Toast.makeText(getApplicationContext(),  "Esta vazio ?? "+  lancamentos.isEmpty() , Toast.LENGTH_SHORT).show();
             }
         });
 
-
-        /*listaLancamentos.setOnClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View view, int posicao,long id){
-                Intent intent = new Intent(ListaLancamentosActivity.this, Lancamento.class);
-
-                intent.putExtra("key1", lancamentos.get(posicao));
-
-                startActivity(intent);
-            }
-        });
-
-        /*
-
-
-        LinearLayout linear = (LinearLayout) findViewById(R.id.layourVertical);*/
     }
 }
