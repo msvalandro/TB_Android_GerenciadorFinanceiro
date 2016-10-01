@@ -500,9 +500,9 @@ int id always 0x7f0c001d
 int id beginning 0x7f0c001a
 int id bottom 0x7f0c0022
 int id btnExc 0x7f0c0057
-int id btnList 0x7f0c0063
-int id btnSelCat 0x7f0c0061
-int id btnSlv 0x7f0c0062
+int id btnList 0x7f0c0059
+int id btnSelCat 0x7f0c0062
+int id btnSlv 0x7f0c0063
 int id buttonPanel 0x7f0c002e
 int id cancel_action 0x7f0c0068
 int id checkbox 0x7f0c003c
@@ -515,7 +515,7 @@ int id decor_content_parent 0x7f0c0043
 int id default_activity_button 0x7f0c002a
 int id disableHome 0x7f0c000c
 int id editTextData 0x7f0c005e
-int id editTextDescricao 0x7f0c005c
+int id editTextDescricao 0x7f0c005d
 int id editTextValor 0x7f0c0060
 int id edit_query 0x7f0c0047
 int id end 0x7f0c001b
@@ -544,8 +544,8 @@ int id progress_circular 0x7f0c0005
 int id progress_horizontal 0x7f0c0006
 int id radio 0x7f0c003e
 int id radioGroup 0x7f0c0056
-int id rdbDespesa 0x7f0c005a
-int id rdbReceita 0x7f0c0059
+int id rdbDespesa 0x7f0c005b
+int id rdbReceita 0x7f0c005a
 int id screen 0x7f0c0015
 int id scrollIndicatorDown 0x7f0c0038
 int id scrollIndicatorUp 0x7f0c0035
@@ -578,8 +578,8 @@ int id tabMode 0x7f0c000b
 int id text 0x7f0c0071
 int id text2 0x7f0c006f
 int id textSpacerNoButtons 0x7f0c0037
-int id textView 0x7f0c005b
-int id textView2 0x7f0c005d
+int id textView 0x7f0c005c
+int id textView2 0x7f0c0061
 int id textView3 0x7f0c005f
 int id textView4 0x7f0c0055
 int id textViewLancamento 0x7f0c0064

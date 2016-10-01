@@ -43,13 +43,14 @@ public class ListaLancamentosActivity extends AppCompatActivity {
           Intent intent = new Intent(getBaseContext(), MainActivity.class);
 
             // ESSE ARRAY ESTA VAZIO -> lancamentos.get(position)
-            //intent.putExtra("chave1", lancamentos.get(position));
+           // intent.putExtra("chave1", lancamentos.get(position));
+
             startActivity(intent);
 
                 /*
                 startActivity(intent);*/
 
-           Toast.makeText(getApplicationContext(),  "Esta vazio ?? "+  lancamentos.isEmpty() , Toast.LENGTH_SHORT).show();
+           Toast.makeText(getApplicationContext(),  "Esta vazio ?? "+   lancamentos.isEmpty() , Toast.LENGTH_SHORT).show();
             }
         });
 

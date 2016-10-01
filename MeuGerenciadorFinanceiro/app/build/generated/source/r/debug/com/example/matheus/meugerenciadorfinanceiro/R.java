@@ -1795,9 +1795,9 @@ containing a value of this type.
         public static final int beginning=0x7f0c001a;
         public static final int bottom=0x7f0c0022;
         public static final int btnExc=0x7f0c0057;
-        public static final int btnList=0x7f0c0063;
-        public static final int btnSelCat=0x7f0c0061;
-        public static final int btnSlv=0x7f0c0062;
+        public static final int btnList=0x7f0c0059;
+        public static final int btnSelCat=0x7f0c0062;
+        public static final int btnSlv=0x7f0c0063;
         public static final int buttonPanel=0x7f0c002e;
         public static final int cancel_action=0x7f0c0068;
         public static final int checkbox=0x7f0c003c;
@@ -1810,7 +1810,7 @@ containing a value of this type.
         public static final int default_activity_button=0x7f0c002a;
         public static final int disableHome=0x7f0c000c;
         public static final int editTextData=0x7f0c005e;
-        public static final int editTextDescricao=0x7f0c005c;
+        public static final int editTextDescricao=0x7f0c005d;
         public static final int editTextValor=0x7f0c0060;
         public static final int edit_query=0x7f0c0047;
         public static final int end=0x7f0c001b;
@@ -1839,8 +1839,8 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c003e;
         public static final int radioGroup=0x7f0c0056;
-        public static final int rdbDespesa=0x7f0c005a;
-        public static final int rdbReceita=0x7f0c0059;
+        public static final int rdbDespesa=0x7f0c005b;
+        public static final int rdbReceita=0x7f0c005a;
         public static final int screen=0x7f0c0015;
         public static final int scrollIndicatorDown=0x7f0c0038;
         public static final int scrollIndicatorUp=0x7f0c0035;
@@ -1873,8 +1873,8 @@ containing a value of this type.
         public static final int text=0x7f0c0071;
         public static final int text2=0x7f0c006f;
         public static final int textSpacerNoButtons=0x7f0c0037;
-        public static final int textView=0x7f0c005b;
-        public static final int textView2=0x7f0c005d;
+        public static final int textView=0x7f0c005c;
+        public static final int textView2=0x7f0c0061;
         public static final int textView3=0x7f0c005f;
         public static final int textView4=0x7f0c0055;
         public static final int textViewLancamento=0x7f0c0064;

@@ -26,7 +26,9 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/swtEfet"
         android:id="@+id/radioGroup"
+        android:layout_alignEnd="@+id/btnList"
         android:layout_alignBottom="@+id/swtEfet">
+
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -46,56 +48,74 @@
             android:layout_alignParentStart="true"
             android:checked="false" />
 
+    </RadioGroup>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Descrição"
-            android:id="@+id/textView" />
+            android:id="@+id/textView"
+            android:layout_alignBaseline="@+id/editTextDescricao"
+            android:layout_alignBottom="@+id/editTextDescricao"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextDescricao" />
+            android:id="@+id/editTextDescricao"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/editTextData" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Data"
-            android:id="@+id/textView2" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Data"
+        android:id="@+id/textView3"
+        android:layout_alignTop="@+id/editTextData"
+        android:layout_alignParentStart="true" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/editTextData" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Valor"
-            android:id="@+id/textView3" />
-
-        <EditText
+    <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextValor" />
+            android:id="@+id/editTextValor"
+        android:layout_below="@+id/editTextData"
+        android:layout_marginTop="35dp"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_alignStart="@+id/btnList" />
 
-    </RadioGroup>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Valor"
+        android:id="@+id/textView2"
+        android:layout_alignTop="@+id/editTextValor"
+        android:layout_alignParentStart="true" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editTextData"
+        android:layout_below="@+id/editTextDescricao"
+        android:layout_alignEnd="@+id/btnExc"
+        android:layout_marginTop="35dp"
+        android:layout_alignStart="@+id/btnList" />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Categoria"
         android:id="@+id/btnSelCat"
-        android:layout_marginBottom="47dp"
-        android:layout_above="@+id/swtEfet"
-        android:layout_toEndOf="@+id/radioGroup" />
+        android:layout_below="@+id/swtEfet"
+        android:layout_alignParentEnd="true" />
 
     <Switch
         android:layout_width="wrap_content"
@@ -103,17 +123,17 @@
         android:text="Efetuado"
         android:id="@+id/swtEfet"
         android:checked="false"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="63dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salvar"
         android:id="@+id/btnSlv"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="56dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"

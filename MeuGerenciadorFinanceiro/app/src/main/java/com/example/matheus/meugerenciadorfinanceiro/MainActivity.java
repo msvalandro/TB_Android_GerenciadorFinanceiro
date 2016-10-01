@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int REQUEST_CAT = 1;
     private static final String STATE_CAT = "categoria";
     private String categoria;
+
     private Button btnSelCat, btnSlv, btnList;
     EditText editTextDescricao, editTextData, editTextValor;
 
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Lancamento.lancamentos = new ArrayList<Lancamento>();
-
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextData = (EditText) findViewById(R.id.editTextData);
         editTextValor = (EditText) findViewById(R.id.editTextValor);
@@ -45,10 +46,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSlv.setOnClickListener(this);
         btnList.setOnClickListener(this);
     }
+
+
     @Override
     public void onClick(View v){
         Intent intent = new Intent(getBaseContext(), ListaLancamentosActivity.class);
         switch (v.getId()){
+
             case R.id.btnSelCat:
                 Intent it = new Intent(this, SelecaoCategoriaActivity.class);
                 it.putExtra(SelecaoCategoriaActivity.EXTRA_CAT, categoria);
