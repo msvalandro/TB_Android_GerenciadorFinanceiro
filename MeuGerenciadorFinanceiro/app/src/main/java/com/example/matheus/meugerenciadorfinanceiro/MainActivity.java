@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String STATE_CAT = "categoria";
     private String categoria;
 
-    private Button btnSelCat, btnSlv, btnList;
+    private Button btnSelCat, btnSlv, btnList, btnExc;
     EditText editTextDescricao, editTextData, editTextValor;
 
     private RadioGroup radioGp;
@@ -48,13 +48,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSelCat = (Button) findViewById(R.id.btnSelCat);
         btnSlv = (Button) findViewById(R.id.btnSlv);
         btnList = (Button) findViewById(R.id.btnList);
+        btnExc = (Button) findViewById(R.id.btnExc);
         radioGp = (RadioGroup) findViewById(R.id.radioGroup);
         btnSelCat.setOnClickListener(this);
         btnSlv.setOnClickListener(this);
         btnList.setOnClickListener(this);
+        btnExc.setOnClickListener(this);
         radioGp.setOnClickListener(this);
                 //check(radio1.getChildAt(index).getId());
-
     }
 
 
@@ -75,19 +76,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!editTextDescricao.getText().toString().isEmpty() &&
                         !editTextData.getText().toString().isEmpty() && !editTextValor.getText().toString().isEmpty() &&
                         !getReponse().equals("-1") ){
-                    for(cachorroquente = 0; cachorroquente < Lancamento.lancamentos.size(); cachorroquente++){
-                        //Toast.makeText(this, "Editado.", Toast.LENGTH_SHORT).show();
-                        if(posicaoAux > -1 /*&& Lancamento.lancamentos.get(posicaoAux).getCodigo() == Lancamento.lancamentos.get(cachorroquente).getCodigo()*/) {
-                            Lancamento.lancamentos.get(cachorroquente).setDescricao(String.valueOf(editTextDescricao));
-                            Lancamento.lancamentos.get(cachorroquente).setData(Integer.parseInt(editTextData.getText().toString()));
-                            Lancamento.lancamentos.get(cachorroquente).setValor(Float.parseFloat(editTextValor.getText().toString()));
-                            clear();
-                            Toast.makeText(this, "Editado.", Toast.LENGTH_SHORT).show();
-                            posicaoAux = -1;
-                            break;
+                    if(posicaoAux > -1) {
+                        for (cachorroquente = 0; cachorroquente < Lancamento.lancamentos.size(); cachorroquente++) {
+                            if (Lancamento.lancamentos.get(posicaoAux).getCodigo() == Lancamento.lancamentos.get(cachorroquente).getCodigo()) {
+                                Lancamento.lancamentos.get(posicaoAux).setDescricao(editTextDescricao.getText().toString());
+                                Lancamento.lancamentos.get(cachorroquente).setData(Integer.parseInt(editTextData.getText().toString()));
+                                Lancamento.lancamentos.get(cachorroquente).setValor(Float.parseFloat(editTextValor.getText().toString()));
+                                clear();
+                                Toast.makeText(this, "Editado.", Toast.LENGTH_SHORT).show();
+                                posicaoAux = -1;
+                                break;
+                            }
                         }
+                        break;
                     }
-
                     String situacao = "";
                     if (getReponse().equals("2131492954")){
                         situacao = "Receita";
@@ -113,6 +115,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra(ListaLancamentosActivity.EXTRA_KEY, categoria);
                 startActivityForResult(intent, REQUEST_POS);
                 break;
+            case R.id.btnExc:
+                if(Lancamento.lancamentos.isEmpty()){
+                    Toast.makeText(this, "Não existem lançamentos.", Toast.LENGTH_LONG).show();
+                    break;
+                }
+                if (posicaoAux > -1){
+                    Lancamento.lancamentos.remove(posicaoAux);
+                    posicaoAux = -1;
+                    clear();
+                    Toast.makeText(this, "Lançamento removido.", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(this, "Selecione um lançamento.", Toast.LENGTH_LONG).show();
+                }
+                break;
         }
     }
 
@@ -136,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());
             editTextData.setText(Integer.valueOf(Lancamento.lancamentos.get(posicaoAux).getData()).toString());
             editTextValor.setText(Float.valueOf(Lancamento.lancamentos.get(posicaoAux).getValor()).toString());
-            Toast.makeText(this, "" + Lancamento.lancamentos.get(posicaoAux).getCodigo(), Toast.LENGTH_LONG).show();
         }
     }
 }
