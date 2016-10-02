@@ -1841,8 +1841,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/matheus/meugerenciadorfinanceiro/ListaLancamentosActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/matheus/meugerenciadorfinanceiro/Lancamento.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/matheus/meugerenciadorfinanceiro/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/matheus/meugerenciadorfinanceiro/LancamentoAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/cell_lista_lancamentos.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/matheus/meugerenciadorfinanceiro/LancamentoAdapter.java" />
       </list>
     </option>
   </component>
