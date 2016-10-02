@@ -55,7 +55,8 @@ public class LancamentoAdapter extends BaseAdapter {
         TextView valor = (TextView) view.findViewById(R.id.textViewRecebeValor);
         valor.setText(String.valueOf(lancamento.getValor()));
 
-
+        TextView situacao = (TextView) view.findViewById(R.id.textViewRecebeSiuacao);
+        situacao.setText(String.valueOf(lancamento.getSituacao()));
 
         return view;
     }

@@ -17,6 +17,7 @@ public class Lancamento implements Parcelable{
     private String descricao;
     private int data;
     private float valor;
+    private String situacao;
 
     public static final Creator <Lancamento> CREATOR = new Creator<Lancamento>() {
         @Override
@@ -28,17 +29,20 @@ public class Lancamento implements Parcelable{
             return new Lancamento[i];
         }
     };
-    public Lancamento (String descricao, int data, float valor) {
+    public Lancamento (String descricao, int data, float valor , String situacao) {
         this.codigo = ++controle;
         this.descricao = descricao;
         this.data = data;
         this.valor = valor;
+        this.situacao = situacao;
     }
     private Lancamento(Parcel parcel) {
         this.codigo = parcel.readInt();
         this.descricao = parcel.readString();
         this.data = parcel.readInt();
         this.valor = parcel.readFloat();
+        this.situacao = parcel.readString();
+
     }
     public int describeContents() {return 0;}
     public void writeToParcel (Parcel dest, int flags) {
@@ -46,6 +50,7 @@ public class Lancamento implements Parcelable{
         dest.writeString(this.descricao);
         dest.writeInt(this.data);
         dest.writeFloat(this.valor);
+        dest.writeString(this.situacao);
     }
 
     public int getCodigo() {
@@ -78,5 +83,14 @@ public class Lancamento implements Parcelable{
 
     public void setValor(float valor) {
         this.valor = valor;
+    }
+
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 }
