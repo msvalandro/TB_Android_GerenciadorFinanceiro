@@ -19,40 +19,40 @@ import java.util.List;
 
 public class ListaLancamentosActivity extends AppCompatActivity {
 
-    ArrayList<Lancamento> lancamentos = new ArrayList<Lancamento>(); //array
-
+    //ArrayList<Lancamento> lancamentos = new ArrayList<Lancamento>(); //array
+    public static final String EXTRA_KEY = "posicao";
+    public static final String EXTRA_RESULTADO = "result";
     private ListView listView;  //outlet para listview
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ArrayList<Lancamento> lancamentos = new ArrayList<Lancamento>();
         setContentView(R.layout.activity_lista_lancamentos);
-
-
         listView = (ListView) findViewById(R.id.listView);
         LancamentoAdapter adapter = new LancamentoAdapter(this, Lancamento.lancamentos);
         listView.setAdapter(adapter);
 
-    listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
 
-    {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-          Intent intent = new Intent(getBaseContext(), MainActivity.class);
-
-            // ESSE ARRAY ESTA VAZIO -> lancamentos.get(position)
-           // intent.putExtra("chave1", lancamentos.get(position));
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent it = new Intent(view.getContext(), MainActivity.class);
+                it.putExtra(EXTRA_RESULTADO, position);
+                setResult(RESULT_OK, it);
+                finish();
+            /* ESSE ARRAY ESTA VAZIO -> lancamentos.get(position)
+            // intent.putExtra("chave1", lancamentos.get(position));
 
             startActivity(intent);
 
                 /*
                 startActivity(intent);*/
 
-           Toast.makeText(getApplicationContext(),  "Esta vazio ?? "+   lancamentos.isEmpty() , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),  "Esta vazio ?? "+   lancamentos.isEmpty() , Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

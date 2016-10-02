@@ -12,7 +12,6 @@ public class Lancamento implements Parcelable{
 
 
     public static ArrayList<Lancamento> lancamentos = new ArrayList<Lancamento>();
-    private static int controle = 0;
     private int codigo;
     private String descricao;
     private int data;
@@ -29,8 +28,8 @@ public class Lancamento implements Parcelable{
             return new Lancamento[i];
         }
     };
-    public Lancamento (String descricao, int data, float valor , String situacao) {
-        this.codigo = ++controle;
+    public Lancamento (int controle, String descricao, int data, float valor , String situacao) {
+        this.codigo = controle;
         this.descricao = descricao;
         this.data = data;
         this.valor = valor;
@@ -84,7 +83,6 @@ public class Lancamento implements Parcelable{
     public void setValor(float valor) {
         this.valor = valor;
     }
-
 
     public String getSituacao() {
         return situacao;

@@ -4,44 +4,34 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="8223372229480"
-    token="4056272880668898464" >
+    timestamp="62315402597913"
+    token="-8213160734794602251" >
 
     <task
         name="javac"
-        duration="226" />
+        duration="11403" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="42" />
+        duration="843" />
     <task
         name="verifier"
-        duration="12" />
+        duration="172" />
 
     <artifact
-        location="C:\Users\aluno\Desktop\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+        location="C:\Users\Matheus-HP\Documents\TB_Android_GerenciadorFinanceiro_\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
         type="DEX" />
 
-    <build timestamp="2865011578319" >
+    <build timestamp="61462511544524" >
         <artifact
-            location="C:\Users\aluno\Desktop\MeuGerenciadorFinanceiro\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\Matheus-HP\Documents\TB_Android_GerenciadorFinanceiro_\MeuGerenciadorFinanceiro\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build
-        timestamp="3486588163962"
-        verifier="R_CLASS_CHANGE" >
+    <build timestamp="62315402597913" >
         <artifact
-            location="C:\Users\aluno\Desktop\MeuGerenciadorFinanceiro\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
-        <artifact
-            location="C:\Users\aluno\Desktop\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
-            type="DEX" />
-    </build>
-    <build timestamp="8223372229480" >
-        <artifact
-            location="C:\Users\aluno\Desktop\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+            location="C:\Users\Matheus-HP\Documents\TB_Android_GerenciadorFinanceiro_\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
             type="DEX" />
     </build>
 
