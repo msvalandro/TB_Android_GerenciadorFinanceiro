@@ -50,13 +50,16 @@ public class LancamentoAdapter extends BaseAdapter {
         descricao.setText(lancamento.getDescricao());
 
         TextView data = (TextView) view.findViewById(R.id.textViewRecebeData);
-        data.setText(String.valueOf(lancamento.getData()));
+        data.setText(lancamento.getData());
 
         TextView valor = (TextView) view.findViewById(R.id.textViewRecebeValor);
         valor.setText(String.valueOf(lancamento.getValor()));
 
-        TextView situacao = (TextView) view.findViewById(R.id.textViewRecebeSiuacao);
-        situacao.setText(String.valueOf(lancamento.getSituacao()));
+        TextView tipo = (TextView) view.findViewById(R.id.textViewRecebeSiuacao);
+        tipo.setText(String.valueOf(lancamento.getTipo()));
+
+        TextView categoria = (TextView) view.findViewById(R.id.textViewCategoria);
+        categoria.setText(String.valueOf(lancamento.getCategoria()));
 
         return view;
     }

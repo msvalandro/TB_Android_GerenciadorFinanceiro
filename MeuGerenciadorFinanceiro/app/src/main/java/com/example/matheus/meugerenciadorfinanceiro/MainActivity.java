@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.FloatProperty;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,19 +26,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int REQUEST_CAT = 1;
     private static final int REQUEST_POS = 300;
     private static final String STATE_CAT = "categoria";
-    private String categoria;
+    private String categoria, tipo;
+    private float saldo;
 
     private Button btnSelCat, btnSlv, btnList, btnExc;
-    EditText editTextDescricao, editTextData, editTextValor;
-
+    private RadioButton rdbReceita, rdbDespesa;
+    private Switch swtEfet;
+    private EditText editTextDescricao, editTextData, editTextValor;
+    private TextView textViewSaldo;
     private RadioGroup radioGp;
-
-    public void clear() {
-        editTextDescricao.setText("");
-        editTextData.setText("");
-        editTextValor.setText("");
-        //zerar os outros botoes tambem
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,27 +44,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextData = (EditText) findViewById(R.id.editTextData);
         editTextValor = (EditText) findViewById(R.id.editTextValor);
+        textViewSaldo = (TextView) findViewById(R.id.textViewSaldo);
         btnSelCat = (Button) findViewById(R.id.btnSelCat);
         btnSlv = (Button) findViewById(R.id.btnSlv);
         btnList = (Button) findViewById(R.id.btnList);
         btnExc = (Button) findViewById(R.id.btnExc);
         radioGp = (RadioGroup) findViewById(R.id.radioGroup);
+        rdbReceita = (RadioButton) findViewById(R.id.rdbReceita);
+        rdbDespesa = (RadioButton) findViewById(R.id.rdbDespesa);
+        swtEfet = (Switch) findViewById(R.id.swtEfet);
+
+        editTextData.addTextChangedListener(Mask.insert("##/##/####", editTextData));
+
         btnSelCat.setOnClickListener(this);
         btnSlv.setOnClickListener(this);
         btnList.setOnClickListener(this);
         btnExc.setOnClickListener(this);
         radioGp.setOnClickListener(this);
-                //check(radio1.getChildAt(index).getId());
+        rdbReceita.setOnClickListener(this);
+        rdbDespesa.setOnClickListener(this);
+        swtEfet.setOnClickListener(this);
     }
 
-
     @Override
-    public void onClick(View v){
-        /*Intent intent = new Intent(getBaseContext(), ListaLancamentosActivity.class);
-        int posicao = intent.getIntExtra("posicao", 0);
-        editTextDescricao.setText(Lancamento.lancamentos.get(posicao).getDescricao().toString());*/
+    public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.btnSelCat:
                 Intent it = new Intent(this, SelecaoCategoriaActivity.class);
@@ -75,14 +79,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSlv:
                 if (!editTextDescricao.getText().toString().isEmpty() &&
                         !editTextData.getText().toString().isEmpty() && !editTextValor.getText().toString().isEmpty() &&
-                        !getReponse().equals("-1") ){
-                    if(posicaoAux > -1) {
+                        !getReponse().equals("-1") && !btnSelCat.getText().equals("Categoria")) {
+                    if (posicaoAux > -1) {
                         for (cachorroquente = 0; cachorroquente < Lancamento.lancamentos.size(); cachorroquente++) {
                             if (Lancamento.lancamentos.get(posicaoAux).getCodigo() == Lancamento.lancamentos.get(cachorroquente).getCodigo()) {
                                 Lancamento.lancamentos.get(posicaoAux).setDescricao(editTextDescricao.getText().toString());
-                                Lancamento.lancamentos.get(cachorroquente).setData(Integer.parseInt(editTextData.getText().toString()));
+                                Lancamento.lancamentos.get(cachorroquente).setData(editTextData.getText().toString());
                                 Lancamento.lancamentos.get(cachorroquente).setValor(Float.parseFloat(editTextValor.getText().toString()));
+                                tipo = "";
+                                if (getReponse().equals("2131492954")) {
+                                    tipo = "Receita";
+                                }
+
+                                if (getReponse().equals("2131492955")) {
+                                    tipo = "Despesa";
+                                }
+                                Lancamento.lancamentos.get(cachorroquente).setTipo(tipo);
+                                Lancamento.lancamentos.get(cachorroquente).setCategoria(categoria);
                                 clear();
+                                atualizaSaldo();
                                 Toast.makeText(this, "Editado.", Toast.LENGTH_SHORT).show();
                                 posicaoAux = -1;
                                 break;
@@ -90,68 +105,120 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         break;
                     }
-                    String situacao = "";
-                    if (getReponse().equals("2131492954")){
-                        situacao = "Receita";
+                    tipo = "";
+                    if (getReponse().equals("2131492954")) {
+                        tipo = "Receita";
                     }
 
-                    if (getReponse().equals("2131492955")){
-                        situacao = "Despesa";
+                    if (getReponse().equals("2131492955")) {
+                        tipo = "Despesa";
                     }
 
-                    Lancamento lancamento = new Lancamento(controle, editTextDescricao.getText().toString(),Integer.parseInt(editTextData.getText().toString()), Float.parseFloat(editTextValor.getText().toString()), situacao );
+                    Lancamento lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), editTextData.getText().toString(), Float.parseFloat(editTextValor.getText().toString()), tipo, categoria);
                     Lancamento.lancamentos.add(lancamento);
                     controle = controle + 1;
                     clear();
+                    atualizaSaldo();
                     Toast.makeText(this, "Adicionado.", Toast.LENGTH_SHORT).show();
-                    // Toast.makeText(this, "Radio id  " + getReponse() , Toast.LENGTH_SHORT).show();
-                    //break;
-                }else{
-                        Toast.makeText(this, "Complete os campos.", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (getReponse().equals("-1")) {
+                        Toast.makeText(this, "Informe se o lançamento é Receita ou Despesa.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if (btnSelCat.getText().equals("Categoria")) {
+                        Toast.makeText(this, "Informe uma categoria.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if (editTextDescricao.getText().toString().isEmpty()) {
+                        Toast.makeText(this, "Informe uma descrição.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if (editTextData.getText().toString().isEmpty()) {
+                        Toast.makeText(this, "Informe uma data.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if (editTextValor.getText().toString().isEmpty()) {
+                        Toast.makeText(this, "Informe um valor.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                 }
                 break;
             case R.id.btnList:
-                Intent intent = new Intent(this, ListaLancamentosActivity.class);
-                intent.putExtra(ListaLancamentosActivity.EXTRA_KEY, categoria);
-                startActivityForResult(intent, REQUEST_POS);
+                if (Lancamento.lancamentos.isEmpty()) {
+                    Toast.makeText(this, "Não existem lançamentos.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(this, ListaLancamentosActivity.class);
+                    intent.putExtra(ListaLancamentosActivity.EXTRA_KEY, categoria);
+                    startActivityForResult(intent, REQUEST_POS);
+                }
                 break;
             case R.id.btnExc:
-                if(Lancamento.lancamentos.isEmpty()){
+                if (Lancamento.lancamentos.isEmpty()) {
                     Toast.makeText(this, "Não existem lançamentos.", Toast.LENGTH_LONG).show();
                     break;
                 }
-                if (posicaoAux > -1){
+                if (posicaoAux > -1) {
                     Lancamento.lancamentos.remove(posicaoAux);
                     posicaoAux = -1;
                     clear();
+                    atualizaSaldo();
                     Toast.makeText(this, "Lançamento removido.", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     Toast.makeText(this, "Selecione um lançamento.", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
     }
 
-    public String getReponse(){
-       //  String.valueOf(radioGp.getCheckedRadioButtonId());
-        //int = radioGp.getCheckedRadioButtonId();
-        return  String.valueOf(radioGp.getCheckedRadioButtonId());
-
+    public String getReponse() {
+        return String.valueOf(radioGp.getCheckedRadioButtonId());
     }
+
     @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CAT){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CAT) {
             categoria = data.getStringExtra(SelecaoCategoriaActivity.EXTRA_RESULTADO);
-            if(categoria != null){
+            if (categoria != null) {
                 btnSelCat.setText(categoria);
             }
         }
-        if (resultCode == RESULT_OK && requestCode == REQUEST_POS){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_POS) {
             posicaoAux = data.getIntExtra(ListaLancamentosActivity.EXTRA_RESULTADO, 0);
+            tipo = Lancamento.lancamentos.get(posicaoAux).getTipo();
+            categoria = Lancamento.lancamentos.get(posicaoAux).getCategoria();
             editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());
-            editTextData.setText(Integer.valueOf(Lancamento.lancamentos.get(posicaoAux).getData()).toString());
+            editTextData.setText(Lancamento.lancamentos.get(posicaoAux).getData().toString());
             editTextValor.setText(Float.valueOf(Lancamento.lancamentos.get(posicaoAux).getValor()).toString());
+            btnSelCat.setText(categoria);
+            if (tipo.equals("Receita")) {
+                rdbReceita.toggle();
+            }
+            if (tipo.equals("Despesa")) {
+                rdbDespesa.toggle();
+            }
         }
+    }
+
+    public void clear() {
+        editTextDescricao.setText("");
+        editTextData.setText("");
+        editTextValor.setText("");
+        btnSelCat.setText("Categoria");
+        radioGp.clearCheck();
+    }
+
+    public void atualizaSaldo() {
+        this.saldo = 0;
+        for (cachorroquente = 0; cachorroquente < Lancamento.lancamentos.size(); cachorroquente++) {
+            if (Lancamento.lancamentos.get(cachorroquente).getTipo().equals("Receita")) {
+                saldo = saldo + Lancamento.lancamentos.get(cachorroquente).getValor();
+            } else if (Lancamento.lancamentos.get(cachorroquente).getTipo().equals("Despesa")) {
+                saldo = saldo - Lancamento.lancamentos.get(cachorroquente).getValor();
+            } else {
+                Toast.makeText(this, "Deu merda!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        textViewSaldo.setText(String.valueOf(this.saldo));
     }
 }

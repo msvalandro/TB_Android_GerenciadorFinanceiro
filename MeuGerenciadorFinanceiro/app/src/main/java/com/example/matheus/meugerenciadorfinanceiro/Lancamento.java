@@ -14,9 +14,10 @@ public class Lancamento implements Parcelable{
     public static ArrayList<Lancamento> lancamentos = new ArrayList<Lancamento>();
     private int codigo;
     private String descricao;
-    private int data;
+    private String data;
     private float valor;
-    private String situacao;
+    private String tipo;
+    private String categoria;
 
     public static final Creator <Lancamento> CREATOR = new Creator<Lancamento>() {
         @Override
@@ -28,28 +29,30 @@ public class Lancamento implements Parcelable{
             return new Lancamento[i];
         }
     };
-    public Lancamento (int controle, String descricao, int data, float valor , String situacao) {
+    public Lancamento (int controle, String descricao, String data, float valor , String tipo, String categoria) {
         this.codigo = controle;
         this.descricao = descricao;
         this.data = data;
         this.valor = valor;
-        this.situacao = situacao;
+        this.tipo = tipo;
+        this.categoria = categoria;
     }
     private Lancamento(Parcel parcel) {
         this.codigo = parcel.readInt();
         this.descricao = parcel.readString();
-        this.data = parcel.readInt();
+        this.data = parcel.readString();
         this.valor = parcel.readFloat();
-        this.situacao = parcel.readString();
-
+        this.tipo = parcel.readString();
+        this.categoria = parcel.readString();
     }
     public int describeContents() {return 0;}
     public void writeToParcel (Parcel dest, int flags) {
         dest.writeInt(this.codigo);
         dest.writeString(this.descricao);
-        dest.writeInt(this.data);
+        dest.writeString(this.data);
         dest.writeFloat(this.valor);
-        dest.writeString(this.situacao);
+        dest.writeString(this.tipo);
+        dest.writeString(this.categoria);
     }
 
     public int getCodigo() {
@@ -68,11 +71,11 @@ public class Lancamento implements Parcelable{
         this.descricao = descricao;
     }
 
-    public int getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -84,11 +87,18 @@ public class Lancamento implements Parcelable{
         this.valor = valor;
     }
 
-    public String getSituacao() {
-        return situacao;
+    public String getTipo() {
+        return tipo;
+    }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }
