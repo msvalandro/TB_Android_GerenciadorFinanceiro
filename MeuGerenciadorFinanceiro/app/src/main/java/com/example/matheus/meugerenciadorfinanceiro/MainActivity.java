@@ -18,6 +18,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String STATE_CAT = "categoria";
     private String categoria, tipo;
     private float saldo;
+    SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
 
     private Button btnSelCat, btnSlv, btnList, btnExc;
     private RadioButton rdbReceita, rdbDespesa;
@@ -84,14 +86,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         for (cachorroquente = 0; cachorroquente < Lancamento.lancamentos.size(); cachorroquente++) {
                             if (Lancamento.lancamentos.get(posicaoAux).getCodigo() == Lancamento.lancamentos.get(cachorroquente).getCodigo()) {
                                 Lancamento.lancamentos.get(posicaoAux).setDescricao(editTextDescricao.getText().toString());
-                                Lancamento.lancamentos.get(cachorroquente).setData(editTextData.getText().toString());
+                                try {
+                                    Lancamento.lancamentos.get(cachorroquente).setData(editTextData.getText().toString());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    //dar mensagem de erro sem crashar a app? (caso a data tenha sido entrada de forma errada)
+                                }
                                 Lancamento.lancamentos.get(cachorroquente).setValor(Float.parseFloat(editTextValor.getText().toString()));
                                 tipo = "";
-                                if (getReponse().equals("2131492954")) {
+                                if (getReponse().equals("2131492960")) {
                                     tipo = "Receita";
                                 }
 
-                                if (getReponse().equals("2131492955")) {
+                                if (getReponse().equals("2131492961")) {
                                     tipo = "Despesa";
                                 }
                                 Lancamento.lancamentos.get(cachorroquente).setTipo(tipo);
@@ -106,15 +113,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                     tipo = "";
-                    if (getReponse().equals("2131492954")) {
+                    if (getReponse().equals("2131492960")) {
                         tipo = "Receita";
                     }
 
-                    if (getReponse().equals("2131492955")) {
+                    if (getReponse().equals("2131492961")) {
                         tipo = "Despesa";
                     }
-
-                    Lancamento lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), editTextData.getText().toString(), Float.parseFloat(editTextValor.getText().toString()), tipo, categoria);
+                    Lancamento lancamento = null;
+                    try {
+                        lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), editTextData.getText().toString(), Float.parseFloat(editTextValor.getText().toString()), tipo, categoria);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        //dar mensagem de erro sem crashar a app? (caso a data tenha sido entrada de forma errada)
+                    }
                     Lancamento.lancamentos.add(lancamento);
                     controle = controle + 1;
                     clear();
@@ -170,9 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public String getReponse() {
-        return String.valueOf(radioGp.getCheckedRadioButtonId());
-    }
+    public String getReponse() {return String.valueOf(radioGp.getCheckedRadioButtonId());}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -188,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tipo = Lancamento.lancamentos.get(posicaoAux).getTipo();
             categoria = Lancamento.lancamentos.get(posicaoAux).getCategoria();
             editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());
-            editTextData.setText(Lancamento.lancamentos.get(posicaoAux).getData().toString());
+            editTextData.setText(out.format(Lancamento.lancamentos.get(posicaoAux).getData()));
             editTextValor.setText(Float.valueOf(Lancamento.lancamentos.get(posicaoAux).getValor()).toString());
             btnSelCat.setText(categoria);
             if (tipo.equals("Receita")) {

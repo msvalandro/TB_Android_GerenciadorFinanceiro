@@ -11,56 +11,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="Descrição"
             android:id="@+id/textViewLancamento"
-            android:textSize="20dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/textViewRecebeData"
-            android:layout_alignEnd="@+id/textViewRecebeValor" />
+            android:textSize="15dp"
+            android:layout_marginStart="45dp"
+            android:layout_alignTop="@+id/textViewRecebeData"
+            android:layout_toEndOf="@+id/textViewRecebeData" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="Data"
             android:id="@+id/textViewRecebeData"
             android:layout_gravity="center_horizontal"
             android:textSize="15dp"
-            android:layout_marginEnd="47dp"
-            android:layout_alignBottom="@+id/textViewRecebeSiuacao"
-            android:layout_toStartOf="@+id/textViewRecebeValor" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="Valor"
             android:id="@+id/textViewRecebeValor"
             android:textSize="15dp"
+            android:layout_alignTop="@+id/textViewRecebeData"
             android:layout_alignParentEnd="true"
-            android:layout_alignBottom="@+id/textViewRecebeData" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="NN"
-            android:layout_below="@+id/textViewLancamento"
-            android:layout_alignParentStart="true"
-            android:layout_alignEnd="@+id/textViewLancamento"
-            android:id="@+id/textViewRecebeSiuacao" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textViewCategoria"
-            android:textSize="15dp"
-            android:layout_alignBottom="@+id/textViewRecebeSiuacao"
-            android:layout_toStartOf="@+id/textViewRecebeData"
-            android:layout_marginEnd="33dp" />
+            android:layout_marginEnd="77dp" />
 
     </RelativeLayout>
 
