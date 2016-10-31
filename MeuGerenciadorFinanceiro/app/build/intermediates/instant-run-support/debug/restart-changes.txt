@@ -1,0 +1,2 @@
+CHANGED,C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\example\matheus\meugerenciadorfinanceiro\MainActivity.class
+CHANGED,C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\example\matheus\meugerenciadorfinanceiro\ListaLancamentosActivity$1.class

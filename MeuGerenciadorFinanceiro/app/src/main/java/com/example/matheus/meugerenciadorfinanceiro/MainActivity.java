@@ -94,11 +94,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 }
                                 Lancamento.lancamentos.get(cachorroquente).setValor(Float.parseFloat(editTextValor.getText().toString()));
                                 tipo = "";
-                                if (getReponse().equals("2131492960")) {
+                                if (getReponse().equals("2131492961")) {
                                     tipo = "Receita";
                                 }
 
-                                if (getReponse().equals("2131492961")) {
+                                if (getReponse().equals("2131492962")) {
                                     tipo = "Despesa";
                                 }
                                 Lancamento.lancamentos.get(cachorroquente).setTipo(tipo);
@@ -113,11 +113,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                     tipo = "";
-                    if (getReponse().equals("2131492960")) {
+                    if (getReponse().equals("2131492961")) {
                         tipo = "Receita";
                     }
 
-                    if (getReponse().equals("2131492961")) {
+                    if (getReponse().equals("2131492962")) {
                         tipo = "Despesa";
                     }
                     Lancamento lancamento = null;
@@ -181,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
     public String getReponse() {return String.valueOf(radioGp.getCheckedRadioButtonId());}
 
     @Override
@@ -195,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (resultCode == RESULT_OK && requestCode == REQUEST_POS) {
             posicaoAux = data.getIntExtra(ListaLancamentosActivity.EXTRA_RESULTADO, 0);
+            Toast.makeText(this, "position: " +posicaoAux, Toast.LENGTH_LONG).show();
             tipo = Lancamento.lancamentos.get(posicaoAux).getTipo();
             categoria = Lancamento.lancamentos.get(posicaoAux).getCategoria();
             editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());

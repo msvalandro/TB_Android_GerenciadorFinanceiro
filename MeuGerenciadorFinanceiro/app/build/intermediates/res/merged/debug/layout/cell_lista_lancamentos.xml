@@ -14,8 +14,8 @@
             android:text="Descrição"
             android:id="@+id/textViewLancamento"
             android:textSize="15dp"
-            android:layout_marginStart="45dp"
-            android:layout_alignTop="@+id/textViewRecebeData"
+            android:layout_marginStart="71dp"
+            android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/textViewRecebeData" />
 
         <TextView
@@ -36,9 +36,8 @@
             android:text="Valor"
             android:id="@+id/textViewRecebeValor"
             android:textSize="15dp"
-            android:layout_alignTop="@+id/textViewRecebeData"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="77dp" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

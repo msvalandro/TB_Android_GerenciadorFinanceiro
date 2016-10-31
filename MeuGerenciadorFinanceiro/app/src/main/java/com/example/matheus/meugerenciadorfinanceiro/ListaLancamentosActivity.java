@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class ListaLancamentosActivity extends AppCompatActivity implements View.
     private TextView textViewMes, textViewAno;
     private static final int REQUEST_MES = 1;
     private Calendar c = Calendar.getInstance();
+    private DateFormat mes = new SimpleDateFormat("MM");
     private DateFormat ano = new SimpleDateFormat("yyyy");
 
     @Override
@@ -47,21 +49,8 @@ public class ListaLancamentosActivity extends AppCompatActivity implements View.
         textViewAno.setText(String.valueOf(c.get(Calendar.YEAR)));
         btnPrev.setOnClickListener(this);
         btnNext.setOnClickListener(this);
-        ArrayList<Lancamento> lancamentos = new ArrayList<Lancamento>();
         listView = (ListView) findViewById(R.id.listView);
-        LancamentoAdapter adapter = new LancamentoAdapter(this, Lancamento.lancamentos);
-
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent it = new Intent(view.getContext(), MainActivity.class);
-                it.putExtra(EXTRA_RESULTADO, position);
-                setResult(RESULT_OK, it);
-                finish();
-            }
-        });
+        atualizaLista();
     }
 
     @Override
@@ -79,6 +68,7 @@ public class ListaLancamentosActivity extends AppCompatActivity implements View.
         c.add(Calendar.MONTH, pizza);
         textViewMes.setText(defineMes(c.get(Calendar.MONTH)));
         textViewAno.setText(String.valueOf(c.get(Calendar.YEAR)));
+        atualizaLista();
     }
     public String defineMes(int sorvete) {
         switch (sorvete) {
@@ -108,5 +98,25 @@ public class ListaLancamentosActivity extends AppCompatActivity implements View.
                 return "Dezembro";
         }
         return "error";
+    }
+    public void atualizaLista() {
+        ArrayList<Lancamento> lancamentosAux = new ArrayList<Lancamento>();
+        for(int i = 0; i < Lancamento.lancamentos.size(); i++){
+            if(Integer.parseInt(mes.format(Lancamento.lancamentos.get(i).getData())) == c.get(Calendar.MONTH) + 1 &&
+                    Integer.parseInt(ano.format(Lancamento.lancamentos.get(i).getData())) == c.get(Calendar.YEAR))
+                lancamentosAux.add(Lancamento.lancamentos.get(i));
+        }
+        LancamentoAdapter adapter = new LancamentoAdapter(this, lancamentosAux);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent it = new Intent(view.getContext(), MainActivity.class);
+                it.putExtra(EXTRA_RESULTADO, position);
+                setResult(RESULT_OK, it);
+                finish();
+            }
+        });
     }
 }
