@@ -4,55 +4,41 @@
     api-level="21"
     density="xhdpi"
     format="7"
-    timestamp="97321911091591"
+    timestamp="184986342393895"
     token="5333900246566675437"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="361" />
+        duration="243" />
     <task
         name="instant-run-dex"
-        duration="405" />
+        duration="768" />
     <task
         name="instant-run-transform"
-        duration="13" />
+        duration="28" />
     <task
         name="verifier"
-        duration="5" />
+        duration="4" />
 
     <artifact
         location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\reload-dex\debug\classes.dex"
         type="RELOAD_DEX" />
 
-    <build timestamp="94813680558293" >
+    <build timestamp="184626652684234" >
         <artifact
             location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="96458734747613"
-        verifier="FIELD_ADDED" >
-        <artifact
-            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="96558438225167"
+        timestamp="184953722438021"
         verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\builds\debug\96558438225167\classes.dex"
+            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\builds\debug\184953722438021\classes.dex"
             type="RELOAD_DEX" />
     </build>
     <build
-        timestamp="97247679817597"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\builds\debug\97247679817597\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        timestamp="97321911091591"
+        timestamp="184986342393895"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\reload-dex\debug\classes.dex"

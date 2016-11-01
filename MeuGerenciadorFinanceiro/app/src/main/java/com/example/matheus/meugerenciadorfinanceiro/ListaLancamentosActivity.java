@@ -100,20 +100,20 @@ public class ListaLancamentosActivity extends AppCompatActivity implements View.
         return "error";
     }
     public void atualizaLista() {
-        ArrayList<Lancamento> lancamentosAux = new ArrayList<Lancamento>();
+        final ArrayList<Lancamento> lancamentosAux = new ArrayList<Lancamento>();
         for(int i = 0; i < Lancamento.lancamentos.size(); i++){
             if(Integer.parseInt(mes.format(Lancamento.lancamentos.get(i).getData())) == c.get(Calendar.MONTH) + 1 &&
                     Integer.parseInt(ano.format(Lancamento.lancamentos.get(i).getData())) == c.get(Calendar.YEAR))
                 lancamentosAux.add(Lancamento.lancamentos.get(i));
         }
-        LancamentoAdapter adapter = new LancamentoAdapter(this, lancamentosAux);
+        final LancamentoAdapter adapter = new LancamentoAdapter(this, lancamentosAux);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent it = new Intent(view.getContext(), MainActivity.class);
-                it.putExtra(EXTRA_RESULTADO, position);
+                it.putExtra(EXTRA_RESULTADO, lancamentosAux.get(position).getCodigo());
                 setResult(RESULT_OK, it);
                 finish();
             }

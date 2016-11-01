@@ -2,6 +2,7 @@ package com.example.matheus.meugerenciadorfinanceiro;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -20,6 +21,7 @@ public class Lancamento implements Parcelable{
     private String descricao;
     private Date data;
     private float valor;
+    private int parcelas;
     private String tipo;
     private String categoria;
 
@@ -33,11 +35,12 @@ public class Lancamento implements Parcelable{
             return new Lancamento[i];
         }
     };
-    public Lancamento (int controle, String descricao, String data, float valor , String tipo, String categoria) throws Exception {
+    public Lancamento (int controle, String descricao, Date data, float valor, int parcelas, String tipo, String categoria) {
         this.codigo = controle;
         this.descricao = descricao;
-        this.data = formataData(data);
+        this.data = data;
         this.valor = valor;
+        this.parcelas = parcelas;
         this.tipo = tipo;
         this.categoria = categoria;
     }
@@ -46,6 +49,7 @@ public class Lancamento implements Parcelable{
         this.descricao = parcel.readString();
         this.data = (java.util.Date) parcel.readSerializable();
         this.valor = parcel.readFloat();
+        this.parcelas = parcel.readInt();
         this.tipo = parcel.readString();
         this.categoria = parcel.readString();
     }
@@ -55,6 +59,7 @@ public class Lancamento implements Parcelable{
         dest.writeString(this.descricao);
         dest.writeSerializable(this.data);
         dest.writeFloat(this.valor);
+        dest.writeInt(this.parcelas);
         dest.writeString(this.tipo);
         dest.writeString(this.categoria);
     }
@@ -79,8 +84,8 @@ public class Lancamento implements Parcelable{
         return data;
     }
 
-    public void setData(String data) throws Exception {
-        this.data = formataData(data);
+    public void setData(Date data){
+        this.data = data;
     }
 
     public float getValor() {
@@ -89,6 +94,14 @@ public class Lancamento implements Parcelable{
 
     public void setValor(float valor) {
         this.valor = valor;
+    }
+
+    public int getParcelas() {
+        return parcelas;
+    }
+
+    public void setParcelas(int parcelas) {
+        this.parcelas = parcelas;
     }
 
     public String getTipo() {
@@ -107,16 +120,17 @@ public class Lancamento implements Parcelable{
         this.categoria = categoria;
     }
 
-    public static Date formataData(String data) throws Exception {
+    /*public static Date formataData(String data) throws Exception {
         if (data == null || data.equals(""))
             return null;
         Date date = null;
         try {
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            formatter.setLenient(false);
             date = (java.util.Date)formatter.parse(data);
         } catch (ParseException e) {
             throw e;
         }
         return date;
-    }
+    }*/
 }

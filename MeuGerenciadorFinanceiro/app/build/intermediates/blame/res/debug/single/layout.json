@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Matheus-HP\\Documents\\TB_Android\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "C:\\Users\\Matheus-HP\\Documents\\TB_Android\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_bar_up_container.xml"
-    },
-    {
         "merged": "C:\\Users\\Matheus-HP\\Documents\\TB_Android\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
         "source": "C:\\Users\\Matheus-HP\\Documents\\TB_Android\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Matheus-HP\\Documents\\TB_Android\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\Matheus-HP\\Documents\\TB_Android\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
         "merged": "C:\\Users\\Matheus-HP\\Documents\\TB_Android\\MeuGerenciadorFinanceiro\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
