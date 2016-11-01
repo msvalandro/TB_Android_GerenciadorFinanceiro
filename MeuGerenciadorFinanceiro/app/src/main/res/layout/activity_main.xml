@@ -24,10 +24,9 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/swtEfet"
         android:id="@+id/radioGroup"
         android:layout_alignEnd="@+id/btnList"
-        android:layout_alignBottom="@+id/swtEfet">
+        android:layout_above="@+id/editTextDescricao">
 
 
         <RadioButton
@@ -55,8 +54,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Descrição"
             android:id="@+id/textView"
-            android:layout_alignBaseline="@+id/editTextDescricao"
-            android:layout_alignBottom="@+id/editTextDescricao"
+            android:layout_centerVertical="true"
             android:layout_alignParentStart="true" />
 
         <EditText
@@ -64,7 +62,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextDescricao"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignStart="@+id/editTextData" />
 
     <TextView
@@ -73,7 +70,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Data"
         android:id="@+id/textView3"
-        android:layout_alignTop="@+id/editTextData"
+        android:layout_alignBottom="@+id/editTextData"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -82,9 +79,7 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editTextValor"
-        android:layout_below="@+id/editTextData"
-        android:layout_marginTop="35dp"
-        android:layout_toEndOf="@+id/textView"
+        android:layout_alignTop="@+id/textView2"
         android:layout_alignStart="@+id/btnList" />
 
     <TextView
@@ -93,20 +88,18 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Valor"
         android:id="@+id/textView2"
-        android:layout_alignTop="@+id/editTextValor"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true" />
 
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="number"
         android:ems="10"
         android:id="@+id/editTextData"
         android:layout_below="@+id/editTextDescricao"
-        android:layout_alignEnd="@+id/btnExc"
-        android:layout_marginTop="35dp"
-        android:layout_alignStart="@+id/btnList" />
+        android:layout_alignStart="@+id/editTextParcelas" />
 
 
     <Button
@@ -114,18 +107,8 @@
         android:layout_height="wrap_content"
         android:text="Categoria"
         android:id="@+id/btnSelCat"
-        android:layout_below="@+id/swtEfet"
-        android:layout_alignParentEnd="true" />
-
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Efetuado"
-        android:id="@+id/swtEfet"
-        android:checked="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="63dp" />
+        android:layout_below="@+id/textViewSaldo"
+        android:layout_alignEnd="@+id/editTextValor" />
 
     <Button
         android:layout_width="wrap_content"
@@ -159,5 +142,23 @@
         android:id="@+id/textViewSaldo"
         android:layout_below="@+id/textView4"
         android:layout_alignStart="@+id/textView4" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextParcelas"
+        android:inputType="number"
+        android:layout_below="@+id/editTextValor"
+        android:layout_alignStart="@+id/editTextValor"
+        android:layout_alignEnd="@+id/editTextValor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Parcelas"
+        android:id="@+id/textViewParcelas"
+        android:layout_alignBottom="@+id/editTextParcelas"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

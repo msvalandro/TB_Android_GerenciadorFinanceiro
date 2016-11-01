@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,16 +51,10 @@ public class LancamentoAdapter extends BaseAdapter {
         descricao.setText(lancamento.getDescricao());
 
         TextView data = (TextView) view.findViewById(R.id.textViewRecebeData);
-        data.setText(lancamento.getData());
+        data.setText(new SimpleDateFormat("dd").format(lancamento.getData()).toString());
 
         TextView valor = (TextView) view.findViewById(R.id.textViewRecebeValor);
         valor.setText(String.valueOf(lancamento.getValor()));
-
-        TextView tipo = (TextView) view.findViewById(R.id.textViewRecebeSiuacao);
-        tipo.setText(String.valueOf(lancamento.getTipo()));
-
-        TextView categoria = (TextView) view.findViewById(R.id.textViewCategoria);
-        categoria.setText(String.valueOf(lancamento.getCategoria()));
 
         return view;
     }

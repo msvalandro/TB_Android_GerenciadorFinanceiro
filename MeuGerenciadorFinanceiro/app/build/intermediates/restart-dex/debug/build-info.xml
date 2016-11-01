@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
-    api-level="23"
-    density="560dpi"
+    abi="x86,armeabi-v7a,armeabi"
+    api-level="21"
+    density="xhdpi"
     format="7"
-    timestamp="341117422838357"
-    token="-8213160734794602251" >
+    timestamp="184986342393895"
+    token="5333900246566675437"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="12504" />
+        duration="243" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="768" />
     <task
         name="instant-run-transform"
-        duration="1748" />
+        duration="28" />
     <task
         name="verifier"
-        duration="167" />
+        duration="4" />
 
     <artifact
-        location="C:\Users\Matheus-HP\Documents\TB_Android_GerenciadorFinanceiro_\MeuGerenciadorFinanceiro\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
-    <build timestamp="341117422838357" >
+    <build timestamp="184626652684234" >
         <artifact
-            location="C:\Users\Matheus-HP\Documents\TB_Android_GerenciadorFinanceiro_\MeuGerenciadorFinanceiro\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="184953722438021"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\builds\debug\184953722438021\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="184986342393895"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>
