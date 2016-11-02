@@ -4,19 +4,19 @@
     api-level="21"
     density="xhdpi"
     format="7"
-    timestamp="184986342393895"
+    timestamp="322266272811170"
     token="5333900246566675437"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="243" />
+        duration="224" />
     <task
         name="instant-run-dex"
-        duration="768" />
+        duration="994" />
     <task
         name="instant-run-transform"
-        duration="28" />
+        duration="37" />
     <task
         name="verifier"
         duration="4" />
@@ -25,20 +25,18 @@
         location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\reload-dex\debug\classes.dex"
         type="RELOAD_DEX" />
 
-    <build timestamp="184626652684234" >
+    <build timestamp="321195869785347" >
         <artifact
             location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build
-        timestamp="184953722438021"
-        verifier="COMPATIBLE" >
+    <build timestamp="322133260833437" >
         <artifact
-            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\builds\debug\184953722438021\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+            type="DEX" />
     </build>
     <build
-        timestamp="184986342393895"
+        timestamp="322266272811170"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Matheus-HP\Documents\TB_Android\MeuGerenciadorFinanceiro\app\build\intermediates\reload-dex\debug\classes.dex"

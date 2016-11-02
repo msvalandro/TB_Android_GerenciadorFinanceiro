@@ -23,6 +23,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -90,13 +91,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 if (!editTextDescricao.getText().toString().isEmpty() &&
                         !editTextData.getText().toString().isEmpty() && !editTextValor.getText().toString().isEmpty() &&
-                        !getReponse().equals("-1") && !btnSelCat.getText().equals("Categoria") && !(Integer.parseInt(editTextParcelas.getText().toString()) < 2) && !(Integer.parseInt(editTextParcelas.getText().toString()) > 12)) {
+                        !getReponse().equals("-1") && !btnSelCat.getText().equals("Categoria") && (retornaParcela() == 0 || (!(retornaParcela() < 2) && !(retornaParcela() > 12)))) {
                     if (posicaoAux > -1) {
                         for (cachorroquente = 0; cachorroquente < Lancamento.lancamentos.size(); cachorroquente++) {
                             if (Lancamento.lancamentos.get(posicaoAux).getCodigo() == Lancamento.lancamentos.get(cachorroquente).getCodigo()) {
                                 Lancamento.lancamentos.get(posicaoAux).setDescricao(editTextDescricao.getText().toString());
                                 Lancamento.lancamentos.get(cachorroquente).setData(data);
                                 Lancamento.lancamentos.get(cachorroquente).setValor(Float.parseFloat(editTextValor.getText().toString()));
+                                if (retornaParcela() > 1 && retornaParcela() < 13){
+                                    Lancamento lancamento = null;
+                                    for (int i = 0; i < Integer.parseInt(editTextParcelas.getText().toString()); i++){
+                                        lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), addMes(data, i), (Float.parseFloat(editTextValor.getText().toString()) / Integer.parseInt(editTextParcelas.getText().toString())), 0, tipo, categoria);
+                                        Lancamento.lancamentos.add(lancamento);
+                                        controle = controle + 1;
+                                    }
+                                    Lancamento.lancamentos.remove(posicaoAux);
+                                    posicaoAux = -1;
+                                    clear();
+                                    atualizaSaldo();
+                                    Toast.makeText(this, "Editado.", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
+
                                 Lancamento.lancamentos.get(cachorroquente).setParcelas(Integer.parseInt(editTextParcelas.getText().toString()));
                                 tipo = "";
                                 if (getReponse().equals("2131492961")) {
@@ -126,7 +142,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         tipo = "Despesa";
                     }
                     Lancamento lancamento = null;
-                    lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), data, Float.parseFloat(editTextValor.getText().toString()), Integer.parseInt(editTextParcelas.getText().toString()), tipo, categoria);
+                    if (retornaParcela() > 1 && retornaParcela() < 13){
+                        for (int i = 0; i < Integer.parseInt(editTextParcelas.getText().toString()); i++){
+                            lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), addMes(data, i), (Float.parseFloat(editTextValor.getText().toString()) / Integer.parseInt(editTextParcelas.getText().toString())), 0, tipo, categoria);
+                            Lancamento.lancamentos.add(lancamento);
+                            controle = controle + 1;
+                        }
+                        clear();
+                        atualizaSaldo();
+                        Toast.makeText(this, "Adicionado.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), data, Float.parseFloat(editTextValor.getText().toString()), retornaParcela(), tipo, categoria);
                     Lancamento.lancamentos.add(lancamento);
                     controle = controle + 1;
                     clear();
@@ -197,13 +224,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (resultCode == RESULT_OK && requestCode == REQUEST_POS) {
             posicaoAux = data.getIntExtra(ListaLancamentosActivity.EXTRA_RESULTADO, 0) - 1; //pega o id e subtrai 1 para obter pos no vetor
-            Toast.makeText(this, "position: " +posicaoAux, Toast.LENGTH_LONG).show();
             tipo = Lancamento.lancamentos.get(posicaoAux).getTipo();
             categoria = Lancamento.lancamentos.get(posicaoAux).getCategoria();
             editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());
             editTextData.setText(out.format(Lancamento.lancamentos.get(posicaoAux).getData()));
             editTextValor.setText(Float.valueOf(Lancamento.lancamentos.get(posicaoAux).getValor()).toString());
-            editTextParcelas.setText(Integer.valueOf(Lancamento.lancamentos.get(posicaoAux).getParcelas()).toString());
+            if(Lancamento.lancamentos.get(posicaoAux).getParcelas() == 0)
+                editTextParcelas.setText("");
+            else
+                editTextParcelas.setText(Integer.valueOf(Lancamento.lancamentos.get(posicaoAux).getParcelas()).toString());
             btnSelCat.setText(categoria);
             if (tipo.equals("Receita")) {
                 rdbReceita.toggle();
@@ -248,5 +277,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             throw e;
         }
         return date;
+    }
+    public static java.util.Date addMes(java.util.Date data, int qtd) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(data);
+        cal.add(Calendar.MONTH, qtd);
+        return cal.getTime();
+    }
+    public int retornaParcela(){
+        if (editTextParcelas.getText().toString().isEmpty()) {
+            return 0;
+        }else {
+            return Integer.parseInt(editTextParcelas.getText().toString());
+        }
     }
 }
