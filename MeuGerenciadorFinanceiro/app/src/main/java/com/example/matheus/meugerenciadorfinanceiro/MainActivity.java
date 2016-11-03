@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if (resultCode == RESULT_OK && requestCode == REQUEST_POS) {
-            posicaoAux = data.getIntExtra(ListaLancamentosActivity.EXTRA_RESULTADO, 0) - 1; //pega o id e subtrai 1 para obter pos no vetor
+            posicaoAux = refreshArray(data.getIntExtra(ListaLancamentosActivity.EXTRA_RESULTADO, 0)); //pega o id e subtrai 1 para obter pos no vetor
             tipo = Lancamento.lancamentos.get(posicaoAux).getTipo();
             categoria = Lancamento.lancamentos.get(posicaoAux).getCategoria();
             editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());
@@ -290,5 +290,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else {
             return Integer.parseInt(editTextParcelas.getText().toString());
         }
+    }
+    public int refreshArray(int codigo){
+        for(int i = 0; i < Lancamento.lancamentos.size(); i++){
+            if(codigo == Lancamento.lancamentos.get(i).getCodigo())
+                return i;
+        }
+        return 0;
     }
 }
