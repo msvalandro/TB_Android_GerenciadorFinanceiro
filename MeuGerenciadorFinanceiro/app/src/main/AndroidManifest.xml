@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".NewMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".SelecaoCategoriaActivity" />
         <activity android:name=".ListaLancamentosActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".TopFiveActivity"></activity>
     </application>
 
 </manifest>

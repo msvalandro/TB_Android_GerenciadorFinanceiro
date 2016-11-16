@@ -26,13 +26,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+    //A gambiarra a gente aceita, o que a gente não aceita é a derrota.
     private int cachorroquente, posicaoAux = -1, controle = 1;
     private static final int REQUEST_CAT = 1;
     private static final int REQUEST_POS = 300;
     private static final String STATE_CAT = "categoria";
     private String categoria, tipo;
     private float saldo;
+    Lancamento lancamento;
     private java.util.Date data;
     SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Lancamento.lancamentos = new ArrayList<Lancamento>();
+        //Lancamento.lancamentos = new ArrayList<Lancamento>();
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextData = (EditText) findViewById(R.id.editTextData);
         editTextValor = (EditText) findViewById(R.id.editTextValor);
@@ -60,6 +61,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rdbReceita = (RadioButton) findViewById(R.id.rdbReceita);
         rdbDespesa = (RadioButton) findViewById(R.id.rdbDespesa);
         out.setLenient(false);
+        atualizaSaldo();
+        Intent it = getIntent();
+        posicaoAux = refreshArray(it.getIntExtra("posicao", -33));
+        tipo = it.getStringExtra("tipo");
+        retornaActivity();
+        if (tipo.equals("Receita")){
+            rdbReceita.toggle();
+            rdbDespesa.setEnabled(false);
+        }else if (tipo.equals("Despesa")){
+            rdbDespesa.toggle();
+            rdbReceita.setEnabled(false);
+        }
 
         editTextData.addTextChangedListener(Mask.insert("##/##/####", editTextData));
 
@@ -91,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 if (!editTextDescricao.getText().toString().isEmpty() &&
                         !editTextData.getText().toString().isEmpty() && !editTextValor.getText().toString().isEmpty() &&
-                        !getReponse().equals("-1") && !btnSelCat.getText().equals("Categoria") && (retornaParcela() == 0 || (!(retornaParcela() < 2) && !(retornaParcela() > 12)))) {
+                        /*!getReponse().equals("-1") && */ !btnSelCat.getText().equals("Categoria") && (retornaParcela() == 0 || (!(retornaParcela() < 2) && !(retornaParcela() > 12)))) {
                     if (posicaoAux > -1) {
                         for (cachorroquente = 0; cachorroquente < Lancamento.lancamentos.size(); cachorroquente++) {
                             if (Lancamento.lancamentos.get(posicaoAux).getCodigo() == Lancamento.lancamentos.get(cachorroquente).getCodigo()) {
@@ -113,16 +126,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     break;
                                 }
 
-                                Lancamento.lancamentos.get(cachorroquente).setParcelas(Integer.parseInt(editTextParcelas.getText().toString()));
-                                tipo = "";
+                                //Lancamento.lancamentos.get(cachorroquente).setParcelas(Integer.parseInt(editTextParcelas.getText().toString()));
+                                /*tipo = "";
                                 if (getReponse().equals("2131492961")) {
                                     tipo = "Receita";
                                 }
 
                                 if (getReponse().equals("2131492962")) {
                                     tipo = "Despesa";
-                                }
-                                Lancamento.lancamentos.get(cachorroquente).setTipo(tipo);
+                                }*/
+                                //Lancamento.lancamentos.get(cachorroquente).setTipo(tipo);
                                 Lancamento.lancamentos.get(cachorroquente).setCategoria(categoria);
                                 clear();
                                 atualizaSaldo();
@@ -133,15 +146,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         break;
                     }
-                    tipo = "";
+                    /*tipo = "";
                     if (getReponse().equals("2131492961")) {
                         tipo = "Receita";
                     }
 
                     if (getReponse().equals("2131492962")) {
                         tipo = "Despesa";
-                    }
-                    Lancamento lancamento = null;
+                    }*/
                     if (retornaParcela() > 1 && retornaParcela() < 13){
                         for (int i = 0; i < Integer.parseInt(editTextParcelas.getText().toString()); i++){
                             lancamento = new Lancamento(controle, editTextDescricao.getText().toString(), addMes(data, i), (Float.parseFloat(editTextValor.getText().toString()) / Integer.parseInt(editTextParcelas.getText().toString())), 0, tipo, categoria);
@@ -160,10 +172,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     atualizaSaldo();
                     Toast.makeText(this, "Adicionado.", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (getReponse().equals("-1")) {
+                    /*if (getReponse().equals("-1")) {
                         Toast.makeText(this, "Informe se o lançamento é Receita ou Despesa.", Toast.LENGTH_SHORT).show();
                         break;
-                    }
+                    }*/
                     if (btnSelCat.getText().equals("Categoria")) {
                         Toast.makeText(this, "Informe uma categoria.", Toast.LENGTH_SHORT).show();
                         break;
@@ -224,22 +236,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (resultCode == RESULT_OK && requestCode == REQUEST_POS) {
             posicaoAux = refreshArray(data.getIntExtra(ListaLancamentosActivity.EXTRA_RESULTADO, 0)); //pega o id e subtrai 1 para obter pos no vetor
-            tipo = Lancamento.lancamentos.get(posicaoAux).getTipo();
-            categoria = Lancamento.lancamentos.get(posicaoAux).getCategoria();
-            editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());
-            editTextData.setText(out.format(Lancamento.lancamentos.get(posicaoAux).getData()));
-            editTextValor.setText(Float.valueOf(Lancamento.lancamentos.get(posicaoAux).getValor()).toString());
-            if(Lancamento.lancamentos.get(posicaoAux).getParcelas() == 0)
-                editTextParcelas.setText("");
-            else
-                editTextParcelas.setText(Integer.valueOf(Lancamento.lancamentos.get(posicaoAux).getParcelas()).toString());
-            btnSelCat.setText(categoria);
-            if (tipo.equals("Receita")) {
-                rdbReceita.toggle();
-            }
-            if (tipo.equals("Despesa")) {
-                rdbDespesa.toggle();
-            }
+            retornaActivity();
         }
     }
 
@@ -249,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextValor.setText("");
         editTextParcelas.setText("");
         btnSelCat.setText("Categoria");
-        radioGp.clearCheck();
+        //radioGp.clearCheck();
     }
 
     public void atualizaSaldo() {
@@ -296,6 +293,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(codigo == Lancamento.lancamentos.get(i).getCodigo())
                 return i;
         }
-        return 0;
+        return -33;
+    }
+    public void retornaActivity() {
+        if(posicaoAux != -33) {
+            tipo = Lancamento.lancamentos.get(posicaoAux).getTipo();
+            categoria = Lancamento.lancamentos.get(posicaoAux).getCategoria();
+            editTextDescricao.setText(Lancamento.lancamentos.get(posicaoAux).getDescricao());
+            editTextData.setText(out.format(Lancamento.lancamentos.get(posicaoAux).getData()));
+            editTextValor.setText(Float.valueOf(Lancamento.lancamentos.get(posicaoAux).getValor()).toString());
+            if (Lancamento.lancamentos.get(posicaoAux).getParcelas() == 0)
+                editTextParcelas.setText("");
+            else
+                editTextParcelas.setText(Integer.valueOf(Lancamento.lancamentos.get(posicaoAux).getParcelas()).toString());
+            btnSelCat.setText(categoria);
+            if (tipo.equals("Receita")) {
+                rdbReceita.toggle();
+            }
+            if (tipo.equals("Despesa")) {
+                rdbDespesa.toggle();
+            }
+        }
     }
 }

@@ -250,6 +250,10 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="acao_despesa"> Cadastrar Despesa</string>
+    <string name="acao_listar"> Exibir Lancamentos</string>
+    <string name="acao_receita"> Cadastrar Receita</string>
+    <string name="acao_top"> Top Five Categorias</string>
     <string name="app_name">MeuGerenciadorFinanceiro</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

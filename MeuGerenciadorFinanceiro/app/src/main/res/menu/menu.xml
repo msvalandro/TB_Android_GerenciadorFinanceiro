@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".NewMainActivity">
+    <item android:id="@+id/acao_receita"
+        android:title="@string/acao_receita"
+        app:showAsAction="collapseActionView|withText"/>
+    <item android:id="@+id/acao_despesa"
+        android:title="@string/acao_despesa"
+        app:showAsAction="collapseActionView|withText"/>
+    <item android:id="@+id/acao_listar"
+        android:title="@string/acao_listar"
+        app:showAsAction="never"/>
+    <item android:id="@+id/acao_top"
+        android:title="@string/acao_top"
+        app:showAsAction="never"/>
+</menu>
