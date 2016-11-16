@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.matheus.meugerenciadorfinanceiro.TopFiveActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Mês"
+        android:id="@+id/textViewMes"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Categoria1"
+        android:id="@+id/textViewNome1"
+        android:layout_below="@+id/textViewMes"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="62dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Categoria2"
+        android:id="@+id/textViewNome2"
+        android:layout_below="@+id/textViewNome1"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Valor1"
+        android:id="@+id/textViewValor1"
+        android:layout_alignTop="@+id/textViewNome1"
+        android:layout_alignEnd="@+id/textViewMes" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Valor2"
+        android:id="@+id/textViewValor2"
+        android:layout_below="@+id/textViewValor1"
+        android:layout_alignStart="@+id/textViewValor1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Porcentagem1"
+        android:id="@+id/textViewPorcentagem1"
+        android:layout_alignTop="@+id/textViewValor1"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Porcentagem2"
+        android:id="@+id/textViewPorcentagem2"
+        android:layout_below="@+id/textViewPorcentagem1"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Categoria3"
+        android:id="@+id/textViewNome3"
+        android:layout_below="@+id/textViewNome2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Valor3"
+        android:id="@+id/textViewValor3"
+        android:layout_below="@+id/textViewValor2"
+        android:layout_alignStart="@+id/textViewValor2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Porcentagem3"
+        android:id="@+id/textViewPorcentagem3"
+        android:layout_below="@+id/textViewPorcentagem2"
+        android:layout_alignStart="@+id/textViewPorcentagem4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Categoria4"
+        android:id="@+id/textViewNome4"
+        android:layout_below="@+id/textViewNome3"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Valor4"
+        android:id="@+id/textViewValor4"
+        android:layout_below="@+id/textViewValor3"
+        android:layout_alignStart="@+id/textViewValor3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Porcentagem4"
+        android:id="@+id/textViewPorcentagem4"
+        android:layout_above="@+id/textViewPorcentagem5"
+        android:layout_alignStart="@+id/textViewPorcentagem2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Categoria5"
+        android:id="@+id/textViewNome5"
+        android:layout_below="@+id/textViewNome4"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Valor5"
+        android:id="@+id/textViewValor5"
+        android:layout_alignTop="@+id/textViewNome5"
+        android:layout_alignStart="@+id/textViewValor4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Porcentagem5"
+        android:id="@+id/textViewPorcentagem5"
+        android:layout_alignTop="@+id/textViewValor5"
+        android:layout_alignStart="@+id/textViewPorcentagem4" />
+</RelativeLayout>

@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.matheus.meugerenciadorfinanceiro.MainActivity" >
+        <activity android:name="com.example.matheus.meugerenciadorfinanceiro.NewMainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +23,8 @@
         </activity>
         <activity android:name="com.example.matheus.meugerenciadorfinanceiro.SelecaoCategoriaActivity" />
         <activity android:name="com.example.matheus.meugerenciadorfinanceiro.ListaLancamentosActivity" />
+        <activity android:name="com.example.matheus.meugerenciadorfinanceiro.MainActivity" />
+        <activity android:name="com.example.matheus.meugerenciadorfinanceiro.TopFiveActivity" />
     </application>
 
 </manifest>

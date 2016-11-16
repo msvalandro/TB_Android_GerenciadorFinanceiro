@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">MeuGerenciadorFinanceiro</string>
+    <string name="acao_receita"> Cadastrar Receita</string>
+    <string name="acao_despesa"> Cadastrar Despesa</string>
+    <string name="acao_listar"> Exibir Lancamentos</string>
+    <string name="acao_top"> Top Five Categorias</string>
     <string-array name="categorias">
         <item>Lazer</item>
         <item>Veículo</item>
